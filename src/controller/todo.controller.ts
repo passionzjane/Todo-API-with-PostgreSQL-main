@@ -90,7 +90,7 @@ class TodoController {
         if (rows.length === 0) {
             return res.status(406).json({
                 status: `success`,
-                message: `Todo not foun in our database`
+                message: `Todo not found in our database`
             })
         }
 
@@ -123,7 +123,7 @@ class TodoController {
             if (rows.length === 0) {
                 return res.status(406).json({
                     status: `success`,
-                    message: `Todo not foun in our database`
+                    message: `Todo not found in our database`
                 })
             }
 
@@ -155,7 +155,7 @@ class TodoController {
             if (rows.length === 0) {
                 return res.status(406).json({
                     status: `success`,
-                    message: `Todo not foun in our database`
+                    message: `Todo not found in our database`
                 })
             }
 
