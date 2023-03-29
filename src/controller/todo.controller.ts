@@ -12,14 +12,14 @@ class TodoController {
     public create: RequestHandler = async(req, res)  => {
         try {
             
-            let reqbody: {
+            interface todoInt {
                 title: string,
                 description: string,
                 status: string
             };
-            reqbody = req.body;
+            const reqBody: todoInt = req.body;
             
-            const {title, description, status} = reqbody;
+            const {title, description, status} = reqBody;
 
             if (!title || !description || !status) {
                 return res.status(406).json({
@@ -35,7 +35,7 @@ class TodoController {
                 })
             }
 
-            const {rows} = await dbConnect.query(
+            const {rows}: QueryResult<any> = await dbConnect.query(
                 `INSERT INTO todo (title, description, status) VALUES ($1, $2, $3) 
                 RETURNING *;`, [title, description, status]
             );
@@ -65,7 +65,7 @@ class TodoController {
             }
             else {
                 return res.status(200).json({
-                    status: `failed`,
+                    status: `success`,
                     message: `You have some todos on your list`,
                     todo: rows
                 })
@@ -122,7 +122,7 @@ class TodoController {
 
             if (rows.length === 0) {
                 return res.status(406).json({
-                    status: `success`,
+                    status: `failed`,
                     message: `Todo not found in our database`
                 })
             }
@@ -154,7 +154,7 @@ class TodoController {
 
             if (rows.length === 0) {
                 return res.status(406).json({
-                    status: `success`,
+                    status: `failed`,
                     message: `Todo not found in our database`
                 })
             }

@@ -27,6 +27,7 @@ app.get('*', (req, res) => {
         message:`Welcome to the whatever page you clicked`
     });
 })
+
 class App {
     private port: configType;
 
@@ -55,7 +56,7 @@ class App {
     }
 
     private home(): void {
-        app.get('*', (req, res) => {
+        app.get('/', (req, res) => {
             return res.status(StatusCodes.OK).send(`<h1>welcome</h1>`);
         })
     }
