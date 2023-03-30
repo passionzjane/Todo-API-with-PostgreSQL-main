@@ -88,7 +88,7 @@ class TodoController {
         const {rows}: QueryResult<any> = await dbConnect.query('SELECT * FROM todo WHERE id = $1;', [id]);
 
         if (rows.length === 0) {
-            return res.status(406).json({
+            return res.status(404).json({
                 status: `success`,
                 message: `Todo not found in our database`
             })

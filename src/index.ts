@@ -11,7 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json())
 app.use(morgan('common'));
-app.use('/api/v1', todoRoutes);
+app.use('/api/v1/todo', todoRoutes);
 
 
 // app.get('/', (req, res) => {
